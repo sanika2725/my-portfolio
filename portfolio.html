@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Sanika Mahesh Bhujbal | Portfolio</title>
+  <style>
+    /* ---------- CSS Variables for Dark/Light Mode ---------- */
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --primary-color: #ff9800;
+      --card-bg: #fff;
+      --nav-bg: #222;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f9f9f9;
+      --card-bg: #1e1e1e;
+      --nav-bg: #333;
+    }
+
+    /* ---------- Global Styles ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: var(--primary-color);
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      color: #fff;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    header .container {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      transition: transform 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        background: var(--nav-bg);
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px 0;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .hamburger {
+        display: block;
+        color: #fff;
+      }
+    }
+
+    /* Dark Mode Button */
+    #toggle-mode {
+      background: var(--primary-color);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    #toggle-mode:hover {
+      background: #e68900;
+      transform: scale(1.05);
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, #222, #444);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .typing {
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: typing 4s steps(30, end) infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: var(--primary-color);
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e68900;
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* ---------- Section Layout ---------- */
+    section {
+      padding: 80px 0;
+    }
+
+    .container {
+      width: 85%;
+      margin: auto;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      color: var(--text-color);
+      transition: 0.3s;
+    }
+
+    h2.section-title:hover {
+      color: var(--primary-color);
+    }
+
+    h2.section-title::after {
+      content: "";
+      display: block;
+      height: 3px;
+      background: var(--primary-color);
+      width: 50%;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ---------- About ---------- */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .about img:hover {
+      transform: scale(1.05);
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: var(--primary-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      position: relative;
+      width: 50%;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: 0.6s;
+    }
+
+    .timeline-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      top: 20px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-item.left { left: 0; }
+    .timeline-item.left::after { right: -10px; }
+    .timeline-item.right { left: 50%; }
+    .timeline-item.right::after { left: -10px; }
+
+    @media (max-width: 768px) {
+      .timeline::after { left: 20px; }
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        margin-left: 40px;
+      }
+      .timeline-item::after { left: -30px !important; }
+    }
+
+    /* ---------- Projects ---------- */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .project.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 0.6s;
+    }
+
+    .project:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    /* ---------- Skills ---------- */
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skills ul li {
+      list-style: none;
+      background: var(--nav-bg);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: 0.3s;
+      cursor: default;
+    }
+
+    .skills ul li:hover {
+      background: var(--primary-color);
+      transform: scale(1.15);
+    }
+
+    /* ---------- Contact ---------- */
+    .contact { text-align: center; }
+    .contact p { margin-bottom: 10px; }
+    .contact a { color: var(--primary-color); font-weight: 500; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--nav-bg);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: var(--primary-color);
+      transform: scale(1.2);
+    }
+
+    /* ---------- Back-to-Top ---------- */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #backToTop:hover {
+      background: #e68900;
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <h1>MyPortfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">☰</div>
+    <button id="toggle-mode">🌙</button>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="hero">
+  <div>
+    <h1>Hello, I'm <span style="color:#ff9800;">Sanika Mahesh Bhujbal</span></h1>
+    <p class="typing">Web Developer | Designer | Programmer</p>
+    <br><br>
+    <a href="Sanika_Bhujbal_Resume_Updated.pdf" class="btn" download>📄 Download Resume</a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="container about">
+    <img src="Photo.jpg" alt="My Photo">
+    <div class="about-text">
+      <h2 class="section-title">About Me</h2>
+      <p>Hello! I'm <b>Sanika Mahesh Bhujbal</b>, a dedicated web developer skilled in creating modern, responsive, and user-friendly websites. I enjoy learning new technologies and working on challenging projects.</p>
+      <p>I specialize in front-end development with HTML, CSS, and JavaScript, and I also have experience with Java and Python.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <i class="fas fa-school timeline-icon"></i>
+        <h3>10th – Ssvp Pusegaon,Satara</h3>
+        <span>2021</span>
+        <p>Secured <b>95.20%</b></p>
+      </div>
+      <div class="timeline-item right">
+        <i class="fas fa-laptop-code timeline-icon"></i>
+        <h3>12th from SGM ,Karad</h3>
+        <span>2021 – 2024</span>
+        
+        <p>Secured <b>76.80%</b></p>
+      </div>
+      <div class="timeline-item left">
+        <i class="fas fa-graduation-cap timeline-icon"></i>
+        <h3>B.Tech Computer Science Engineering – PCET’s Pimpri Chinchwad University, Pune</h3>
+        <span>2024 – 2027</span>
+        <p>Pursuing Bachelor of Technology in <b>Computer Science</b></p>
+        <p>CGPA: <b>8.61</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item right">
+        <i class="fas fa-briefcase timeline-icon"></i>
+        
+        <p>
+          - Worked on a <b>AMIXA website on offline code editor</b> project <br>
+          - Gained hands-on experience in <b>Web Development</b> and <b>team collaboration</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>A personal portfolio website built with HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="project">
+        <h3>Student Management System</h3>
+        <p>A desktop-based application providing a platform for seamless learning.</p>
+      </div>
+      <div class="project">
+        <h3>Resume Ranking System</h3>
+        <p>Ranks resumes based on company-specific criteria for efficient hiring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>C</li>
+        <li>C++</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>PHP</li>
+        <li>SQL</li>
+        <li>GitHub</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container contact">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: <a href="mailto:sanikabhujbal788@gmail.com">sanikabhujbal788@gmail.com</a></p>
+    <p>LinkedIn: <a href="www.linkedin.com/in/sanika-bhujbal-aa33a428a">linkedin.com/in/sanika-Bhujbal</a></p>
+    <p>GitHub: <a href="https://github.com/sanika2725">github.com/sanikayadav</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Sanika Mahesh Bhujbal | All Rights Reserved</p>
+  <div class="socials">
+    <a href="#"><i class="fas fa-globe"></i></a>
+    <a href="www.linkedin.com/in/sanika-bhujbal-aa33a428a" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/sanika2725" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/__sanika25__/" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop">↑</button>
+
+<!-- JavaScript -->
+<script>
+  // Dark Mode Toggle
+  const toggleBtn = document.getElementById('toggle-mode');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    toggleBtn.textContent = document.body.classList.contains('dark-mode') ? "☀️" : "🌙";
+  });
+
+  // Hamburger Toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('nav ul');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  // Scroll Animation for Projects & Timeline
+  const items = document.querySelectorAll('.project, .timeline-item');
+  window.addEventListener('scroll', () => {
+    items.forEach(p => {
+      const rect = p.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100){
+        p.classList.add('show');
+      }
+    });
+  });
+
+  // Back to Top Button
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+</script>
+
+</body>
+</html>
